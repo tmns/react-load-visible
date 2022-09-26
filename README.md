@@ -1,8 +1,8 @@
-# `react-load-visible`
+# `react-load-visible` ⚛️ 🌀 👀
 
 ### Intro
 
-This library provides a wrapper for [@loadable/component](https://github.com/gregberge/loadable-components), utilizing the [`IntersectionObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to automatically load component code once the component's "visible". By default, this means once any part of the component has entered the browser's viewport.
+This library provides a wrapper for [@loadable/component](https://github.com/gregberge/loadable-components), utilizing the [`IntersectionObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) to automatically load component code once the component's "visible". By default, this means once any part of the component has entered the browser's viewport. All for [less than 1kb](https://bundlephobia.com/package/react-load-visible)!
 
 It builds upon the great work already done in [`react-loadable-visibility`](https://github.com/stratiformltd/react-loadable-visibility), which is an awesome project but seems to be no longer maintained. Further, it is lacking in a few areas that this library attempts to improve. Specifically, at the time of writing, they differ in the following main ways:
 

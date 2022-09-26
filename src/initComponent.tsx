@@ -4,7 +4,7 @@ import { LoadFn, LoadOptions, WrapperProps } from './types'
 import initObserver from './initObserver'
 import { isObserverAvailable } from './utils'
 
-function initComponent<Props>(loadFn: LoadFn<Props>, opts: LoadOptions<Props>) {
+function initComponent<Props>(loadFn: LoadFn<Props>, opts?: LoadOptions<Props>) {
   // If we're in an environment without `window.IntersectionObserver`,
   // we simply early return `loadable`'s result as would be done normally.
   if (!isObserverAvailable()) return loadable(loadFn, opts)

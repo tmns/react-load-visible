@@ -1,0 +1,51 @@
+{
+  "name": "react-load-visible",
+  "version": "0.0.0",
+  "description": "A wrapper for @loadable/component that uses IntersectionObserver to trigger component load.",
+  "repository": "https://github.com/tmns/react-load-visible",
+  "author": "tmns",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs",
+    "types": "./dist/index.d.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "pnpm run build",
+    "release": "bumpp --commit --push --tag && npm publish",
+    "lint": "eslint --ext=js,ts,jsx,tsx .",
+    "lint:fix": "eslint --ext=js,ts,jsx,tsx . --fix"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.6",
+    "@loadable/component": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@loadable/component": "^5.15.2",
+    "@types/loadable__component": "^5.13.4",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "bumpp": "^8.2.1",
+    "esbuild": "^0.15.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.3"
+  },
+  "keywords": [
+    "react",
+    "loadable",
+    "component",
+    "lazy",
+    "intersection",
+    "observer",
+    "visible"
+  ]
+}

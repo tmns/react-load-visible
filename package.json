@@ -1,6 +1,6 @@
 {
   "name": "react-load-visible",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A wrapper for @loadable/component that uses IntersectionObserver to trigger component load.",
   "repository": "https://github.com/tmns/react-load-visible",
   "author": "tmns",

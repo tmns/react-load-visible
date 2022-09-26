@@ -1,6 +1,6 @@
 {
   "name": "react-load-visible",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A wrapper for @loadable/component that uses IntersectionObserver to trigger component load.",
   "repository": "https://github.com/tmns/react-load-visible",
   "author": "tmns",
@@ -21,19 +21,30 @@
     "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint --ext=js,ts,jsx,tsx .",
-    "lint:fix": "eslint --ext=js,ts,jsx,tsx . --fix"
+    "lint:fix": "eslint --ext=js,ts,jsx,tsx . --fix",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "peerDependencies": {
-    "react": ">=16.8.6",
-    "@loadable/component": ">=5.0.0"
+    "@loadable/component": ">=5.0.0",
+    "react": ">=16.8.6"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.19.1",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
     "@loadable/component": "^5.15.2",
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.0.3",
     "@types/loadable__component": "^5.13.4",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "bumpp": "^8.2.1",
     "esbuild": "^0.15.9",
+    "jest": "^29.0.3",
+    "jest-environment-jsdom": "^29.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.2.3",

@@ -13,6 +13,8 @@ It builds upon the great work already done in [`react-loadable-visibility`](http
 - The original library was written to accommodate both `@loadable/component` and [`react-loadable`](https://github.com/jamiebuilds/react-loadable); however, `react-loadable` has been deprecated. This library **only supports `@loadable/component`**.
 - The original library was written in JavaScript. This library is written in TypeScript.
 
+For a super basic demo, you can check out this [Stackblitz](https://stackblitz.com/edit/vitejs-vite-lbnqf4?file=src/App.tsx)!
+
 ### Getting started
 
 First, install the necessary packages:

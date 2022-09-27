@@ -96,6 +96,12 @@ Note however that you will need to [configure `@loadable/component` itself corre
 
 If you come across any problems or areas of improvement, please don't hesitate to let me know! Feel free to open an issue or submit a PR.
 
+If submitting a PR, please check tests are still passing after your changes. It's as easy as:
+
+```bash
+npm test
+```
+
 ### License
 Licensed under the MIT License, Copyright © 2022-present tmns.
 

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import loadable, { ExtraComponentProps } from '@loadable/component'
-import { LoadFn, LoadOptions, WrapperProps } from './types'
+import loadable from '@loadable/component'
+import { LoadFn, LoadOptions, OnVisibleComponentProps } from './types'
 import initObserver from './initObserver'
 import { isObserverAvailable } from './utils'
 
@@ -23,7 +23,7 @@ function initComponent<Props>(loadFn: LoadFn<Props>, opts?: LoadOptions<Props>) 
 
   // The "wrapping" component we return, which itself returns either the placeholder
   // `div` (optionally with a fallback) or the loaded component.
-  function OnVisibleComponent(props: Props & WrapperProps & ExtraComponentProps) {
+  function OnVisibleComponent(props: OnVisibleComponentProps<Props>) {
     const [isVisible, setVisible] = useState<Boolean>(isLoaded)
     const ref = useRef<HTMLDivElement>(null)
 

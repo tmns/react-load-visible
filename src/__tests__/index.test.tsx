@@ -189,7 +189,7 @@ describe('when IntersectionObserver is available', () => {
     expect(queryByTestId('fallback')).not.toBeInTheDocument()
   })
 
-  it('uses passed in intersection observer options', async () => {
+  it('uses passed in IntersectionObserver options', async () => {
     const { initObserver } = await import('..')
 
     const [, observer] = initObserver({
@@ -201,6 +201,15 @@ describe('when IntersectionObserver is available', () => {
     expect(observer?.root instanceof HTMLBodyElement).toBeTruthy()
     expect(observer?.rootMargin).toBe('500px')
     expect(observer?.thresholds).toEqual([3])
+  })
+
+  it('only creates one IntersectionObserver instance', async () => {
+    const { initObserver } = await import('..')
+
+    const [, observer1] = initObserver()
+    const [, observer2] = initObserver()
+
+    expect(observer1).toBe(observer2)
   })
 
   it('does not set up visibility handlers until mounted', () => {

@@ -20,4 +20,5 @@ export type ObserverOptions = {
   threshold?: number | number[]
 }
 
-export type InitObserverTuple = [Map<Element, Function>, IntersectionObserver | undefined]
+export type VisibleHandler = () => void
+export type InitObserverTuple = [Map<Element, VisibleHandler>, IntersectionObserver | undefined]

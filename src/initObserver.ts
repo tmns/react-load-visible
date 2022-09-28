@@ -1,9 +1,9 @@
-import type { ObserverOptions, InitObserverTuple } from './types'
+import type { ObserverOptions, InitObserverTuple, VisibleHandler } from './types'
 import { isObserverAvailable } from './utils'
 
 // Note that the below two variables are only instantiated once.
 // A mapping of our observed elements to their `handleOnVisible` functions.
-const trackedElements = new Map<Element, Function>()
+const trackedElements = new Map<Element, VisibleHandler>()
 // Our `IntersectionObserver` instance.
 let observer: IntersectionObserver | undefined
 

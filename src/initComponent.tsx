@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import loadable from '@loadable/component'
-import { LoadFn, LoadOptions, OnVisibleComponentProps } from './types'
+import { LoadFn, LoadOptions, OnVisibleComponentProps, VisibleHandler } from './types'
 import initObserver from './initObserver'
 import { isObserverAvailable } from './utils'
 
@@ -13,7 +13,7 @@ function initComponent<Props>(loadFn: LoadFn<Props>, opts?: LoadOptions<Props>) 
   // `load` or `preload` function is called. On subsequent calls, being
   // `true` prevents the component's `onVisibleHandlers` from rerunning.
   let isLoaded = false
-  const onVisibleHandlers: Function[] = []
+  const onVisibleHandlers: VisibleHandler[] = []
 
   // Get the `loadable` component that we will return when visible.
   const LoadableComponent = loadable(loadFn, opts)
@@ -24,7 +24,7 @@ function initComponent<Props>(loadFn: LoadFn<Props>, opts?: LoadOptions<Props>) 
   // The "wrapping" component we return, which itself returns either the placeholder
   // `div` (optionally with a fallback) or the loaded component.
   function OnVisibleComponent(props: OnVisibleComponentProps<Props>) {
-    const [isVisible, setVisible] = useState<Boolean>(isLoaded)
+    const [isVisible, setVisible] = useState<boolean>(isLoaded)
     const ref = useRef<HTMLDivElement>(null)
 
     function handleOnVisible() {

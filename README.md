@@ -95,6 +95,7 @@ Note however that you will need to [configure `@loadable/component` itself corre
 ### Tips
 
 #### Test environment
+
 You will probably want to mock this library when testing components loaded by it. The most straightforward way is to simply call the loader function and return the module. With Jest, that could look like:
 
 ```tsx
@@ -106,6 +107,7 @@ mockedLoadable.mockImplementation(async (load) => await load())
 ```
 
 #### Webpack
+
 If using with Webpack, you may receive an error while building that refers to the libraries `mjs` file. This means Webpack is processing the `mjs` file but doesn't know how to handle it. You can solve this by adding the following to your Webpack config's module rules:
 
 ```tsx

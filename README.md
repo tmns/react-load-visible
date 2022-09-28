@@ -7,7 +7,7 @@ This library provides a wrapper for [@loadable/component](https://github.com/gre
 It builds upon the great work already done in [`react-loadable-visibility`](https://github.com/stratiformltd/react-loadable-visibility), which is an awesome project but seems to be no longer maintained. Further, it is lacking in a few areas that this library attempts to improve. Specifically, at the time of writing, they differ in the following main ways:
 
 - The original library [does not expose `@loadable/component`'s `load` function](https://github.com/stratiformltd/react-loadable-visibility/issues/40). This library does.
-- The original library does not provide a way to configure the instantiated `IntersectionObserver` with your own options (i.e. `root`, `rootMargin`, `threshold`). This library does via exposing an extra function, `initObserver`.
+- The original library [does not provide a way to configure the `IntersectionObserver` with your own options](https://github.com/stratiformltd/react-loadable-visibility/issues/16) (i.e. `root`, `rootMargin`, `threshold`). This library does via exposing an extra function, `initObserver`.
 - The original library applies all props passed to the deferred component to the wrapping `div`, which [results in a slew of React console warnings](https://github.com/stratiformltd/react-loadable-visibility/issues/35). This library does not apply these props to the wrapper.
 - The original library [does not provide a way to apply styles specifically to the wrapper](https://github.com/stratiformltd/react-loadable-visibility/issues/21) beyond a `style` or `className` prop, which also gets applied to the deferred component when loaded. This library does via a `wrapperCss` prop.
 - The original library was written to accommodate both `@loadable/component` and [`react-loadable`](https://github.com/jamiebuilds/react-loadable); however, `react-loadable` has been deprecated. This library **only supports `@loadable/component`**.
@@ -92,6 +92,35 @@ In the case of the code running in an environment that does not provide `Interse
 
 Note however that you will need to [configure `@loadable/component` itself correctly to enable SSR](https://loadable-components.com/docs/server-side-rendering/).
 
+### Tips
+
+#### Test environment
+You will probably want to mock this library when testing components loaded by it. The most straightforward way is to simply call the loader function and return the module. With Jest, that could look like:
+
+```tsx
+import loadable from 'react-load-visible'
+jest.mock('react-load-visible')
+
+const mockedLoadable = jest.mocked(loadable)
+mockedLoadable.mockImplementation(async (load) => await load())
+```
+
+#### Webpack
+If using with Webpack, you may receive an error while building that refers to the libraries `mjs` file. This means Webpack is processing the `mjs` file but doesn't know how to handle it. You can solve this by adding the following to your Webpack config's module rules:
+
+```tsx
+modules: {
+  rules: [
+    // ... other rules
+    {
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    },
+  ]
+}
+```
+
 ### Contributing
 
 If you come across any problems or areas of improvement, please don't hesitate to let me know! Feel free to open an issue or submit a PR.
@@ -103,6 +132,7 @@ npm test
 ```
 
 ### License
+
 Licensed under the MIT License, Copyright © 2022-present tmns.
 
 See LICENSE for more information.
